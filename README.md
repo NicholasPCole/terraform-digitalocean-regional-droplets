@@ -28,7 +28,7 @@ You will need the following resources already created in your DigitalOcean accou
 
 Call the module like so:
 
-```
+```hcl
 module "test_droplets" {
   source      = "github.com/NicholasPCole/terraform-digitalocean-regional-droplets"
 
