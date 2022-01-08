@@ -1,3 +1,9 @@
+variable "additional_droplet_tags" {
+  type        = list(string)
+  description = "Additional tag(s) to apply to created Droplets."
+  default     = []
+}
+
 variable "dns_record_ttl" {
   type        = string
   description = "Time to live value for which DNS records will be cached."

@@ -32,7 +32,7 @@ resource "digitalocean_droplet" "regional" {
   ipv6       = true
   monitoring = true
   ssh_keys   = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
-  tags       = [digitalocean_tag.regional.id]
+  tags       = flatten([digitalocean_tag.regional.id, var.additional_droplet_tags])
 }
 
 resource "digitalocean_project" "regional" {
