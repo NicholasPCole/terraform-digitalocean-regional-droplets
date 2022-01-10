@@ -24,15 +24,16 @@ data "digitalocean_ssh_keys" "keys" {
 resource "digitalocean_droplet" "regional" {
   for_each = toset(data.digitalocean_regions.available.regions[*].slug)
 
-  name       = "${var.name_prefix}${each.key}.${var.domain_name}"
-  region     = each.key
-  image      = var.droplet_image
-  size       = var.droplet_size
-  backups    = false
-  ipv6       = true
-  monitoring = true
-  ssh_keys   = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
-  tags       = flatten([digitalocean_tag.regional.id, var.additional_droplet_tags])
+  name          = "${var.name_prefix}${each.key}.${var.domain_name}"
+  region        = each.key
+  image         = var.droplet_image
+  size          = var.droplet_size
+  backups       = var.enable_droplet_backups
+  droplet_agent = var.enable_droplet_agent
+  ipv6          = true
+  monitoring    = var.enable_droplet_monitoring
+  ssh_keys      = data.digitalocean_ssh_keys.keys.ssh_keys[*].id
+  tags          = flatten([digitalocean_tag.regional.id, var.additional_droplet_tags])
 }
 
 resource "digitalocean_project" "regional" {

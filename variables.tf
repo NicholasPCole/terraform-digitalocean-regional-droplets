@@ -27,6 +27,24 @@ variable "droplet_size" {
   default     = "s-1vcpu-1gb"
 }
 
+variable "enable_droplet_agent" {
+  type        = bool
+  description = "Pre-install the DigitalOcean Droplet agent for console access in the control panel."
+  default     = false
+}
+
+variable "enable_droplet_backups" {
+  type        = bool
+  description = "Enable weekly backups for the created Droplets."
+  default     = false
+}
+
+variable "enable_droplet_monitoring" {
+  type        = bool
+  description = "Pre-install the DigitalOcean monitoring agent."
+  default     = true
+}
+
 variable "name_prefix" {
   type        = string
   description = "An optional string prefixed to Droplet and DNS record names."
