@@ -30,7 +30,7 @@ Call the module like so:
 
 ```hcl
 module "test_droplets" {
-  source      = "github.com/NicholasPCole/terraform-digitalocean-regional-droplets"
+  source      = "NicholasPCole/regional-droplets/digitalocean"
 
   domain_name = "example.com"
 }
